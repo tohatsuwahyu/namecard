@@ -6,9 +6,9 @@ Aplikasi statis responsif untuk menyimpan foto kartu nama dan detail kontak di G
 
 1. Buat repository baru bernama `cardly` di akun GitHub, lalu unggah semua file di folder ini ke root branch `main`.
 2. Buka **Settings → Pages**. Pilih **Deploy from a branch**, branch `main`, folder `/ (root)`, lalu simpan.
-3. Di [Google Cloud Console](https://console.cloud.google.com/), buat/pilih project, aktifkan **Google Drive API**, lalu siapkan OAuth consent screen agar setiap pengguna dapat memakai akun Google miliknya sendiri.
-4. Atur OAuth audience sebagai **External**, lalu buat satu **OAuth client ID** bertipe **Web application** untuk dipakai semua pengguna. Isi **Authorized JavaScript origins** dengan `https://tohatsuwahyu.github.io` (tanpa `/namecard`). Jika aplikasi masih dalam mode Testing, tambahkan akun-akun Google pengguna sebagai test users. Setiap pengguna masuk dengan akun Google sendiri; data disimpan dalam folder `Cardly` pada Drive akun tersebut.
-5. Buka situs GitHub Pages di HP/komputer, pilih **Login dengan Google**, masukkan Client ID, lalu setujui akses Drive. Saat login pertama, aplikasi otomatis membuat folder `Cardly` di Drive akun tersebut. Login berikutnya membuka koleksi yang sama. Pada perangkat lain, pengguna login dengan akun Google miliknya sendiri untuk membuka koleksinya.
+3. Di [Google Cloud Console](https://console.cloud.google.com/), buat/pilih project dan aktifkan **Google Drive API**.
+4. Siapkan Google Auth Platform dengan **Audience: External**. Buat satu OAuth Client ID bertipe **Web application** untuk aplikasi; pada **Authorized JavaScript origins**, masukkan `https://tohatsuwahyu.github.io` (tanpa `/namecard`). Jika status masih Testing, tambahkan akun pengguna sebagai test users.
+5. Pemilik aplikasi memasang Client ID tersebut satu kali pada konfigurasi `GOOGLE_CLIENT_ID` di `app.js`. Pengguna tidak perlu membuat project Cloud atau memasukkan Client ID: mereka cukup menekan **Login dengan Google** dan menyetujui akses Drive. Kartu disimpan di folder `Cardly` pada Drive akun yang mereka pilih.
 
 ## Fitur
 
