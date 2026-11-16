@@ -6,9 +6,9 @@ Aplikasi statis responsif untuk menyimpan foto kartu nama dan detail kontak di G
 
 1. Buat repository baru bernama `cardly` di akun GitHub, lalu unggah semua file di folder ini ke root branch `main`.
 2. Buka **Settings → Pages**. Pilih **Deploy from a branch**, branch `main`, folder `/ (root)`, lalu simpan.
-3. Di [Google Cloud Console](https://console.cloud.google.com/), buat/pilih project, aktifkan **Google Drive API**, lalu siapkan OAuth consent screen untuk akun Google yang akan dipakai.
-4. Atur OAuth audience sebagai **Internal** di Google Workspace perusahaan, lalu buat **OAuth client ID** bertipe **Web application**. Isi **Authorized JavaScript origins** dengan alamat origin GitHub Pages, misalnya `https://namaakun.github.io` (tanpa path `/cardly`). Aplikasi juga memeriksa domain email `to-hatsu.info`; ubah `ALLOWED_DOMAIN` di `app.js` bila domain perusahaan berbeda.
-5. Buka situs GitHub Pages di HP/komputer, pilih **Login Google Workspace**, masukkan Client ID, lalu setujui akses Drive. Saat login pertama, aplikasi otomatis membuat folder `Cardly` di Drive akun tersebut. Login berikutnya membuka koleksi yang sama. Ulangi login pada perangkat lain menggunakan akun perusahaan yang sama.
+3. Di [Google Cloud Console](https://console.cloud.google.com/), buat/pilih project, aktifkan **Google Drive API**, lalu siapkan OAuth consent screen agar setiap pengguna dapat memakai akun Google miliknya sendiri.
+4. Atur OAuth audience sebagai **External**, lalu buat satu **OAuth client ID** bertipe **Web application** untuk dipakai semua pengguna. Isi **Authorized JavaScript origins** dengan `https://tohatsuwahyu.github.io` (tanpa `/namecard`). Jika aplikasi masih dalam mode Testing, tambahkan akun-akun Google pengguna sebagai test users. Setiap pengguna masuk dengan akun Google sendiri; data disimpan dalam folder `Cardly` pada Drive akun tersebut.
+5. Buka situs GitHub Pages di HP/komputer, pilih **Login dengan Google**, masukkan Client ID, lalu setujui akses Drive. Saat login pertama, aplikasi otomatis membuat folder `Cardly` di Drive akun tersebut. Login berikutnya membuka koleksi yang sama. Pada perangkat lain, pengguna login dengan akun Google miliknya sendiri untuk membuka koleksinya.
 
 ## Fitur
 
@@ -20,7 +20,7 @@ Aplikasi statis responsif untuk menyimpan foto kartu nama dan detail kontak di G
 - Foto kartu dapat diambil langsung dari kamera HP.
 - Catatan kontak, perusahaan, email, nomor telepon, website, dan catatan pertemuan.
 - Pencarian, favorit, urutkan nama/terbaru, dan ringkasan koleksi.
-- Setiap akun Google Workspace memiliki folder `Cardly` dan koleksi kartu masing-masing di Drive pribadi pemilik akun. Folder bersama yang dikirim sebelumnya tidak digunakan untuk data personal karena metadata Drive menunjukkan akses “siapa pun dengan link dapat mengedit”.
+- Setiap akun Google memiliki folder `Cardly` dan koleksi kartu masing-masing di Drive pribadi pemilik akun. Folder bersama yang dikirim sebelumnya tidak digunakan untuk data personal karena metadata Drive menunjukkan akses “siapa pun dengan link dapat mengedit”.
 - Cache lokal untuk melihat koleksi di perangkat yang sama.
 
 ## OCR berbasis API AI (opsional)
