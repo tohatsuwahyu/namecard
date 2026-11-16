@@ -12,7 +12,7 @@ Aplikasi statis responsif untuk menyimpan foto kartu nama dan detail kontak di G
 
 ## Fitur
 
-- OCR otomatis menggunakan Tesseract.js untuk kartu berbahasa Indonesia, Inggris, dan Jepang. Hasil pembacaan mengisi form untuk diperiksa dan dikoreksi sebelum disimpan. OCR berjalan di browser; koneksi internet dibutuhkan saat memuat library dan data bahasa pertama kali.
+- OCR berjalan di browser. Bahasa antarmuka dan OCR default adalah Jepang (dengan Inggris); opsi Indonesia menggunakan model Indonesia + Inggris. Area kartu dipotong otomatis bila terdeteksi, dan teks mentah OCR bisa dibuka untuk pengecekan. Foto perlu cukup dekat, lurus, dan terang agar hasilnya baik. Koneksi internet dibutuhkan untuk memuat library dan model bahasa.
 - Pilihan antarmuka Bahasa Indonesia, English, dan 日本語.
 - Kredit aplikasi: **Designed & created by Wahyu**.
 
@@ -23,8 +23,13 @@ Aplikasi statis responsif untuk menyimpan foto kartu nama dan detail kontak di G
 - Setiap akun Google Workspace memiliki folder `Cardly` dan koleksi kartu masing-masing di Drive pribadi pemilik akun. Folder bersama yang dikirim sebelumnya tidak digunakan untuk data personal karena metadata Drive menunjukkan akses “siapa pun dengan link dapat mengedit”.
 - Cache lokal untuk melihat koleksi di perangkat yang sama.
 
+## OCR berbasis API AI (opsional)
+
+Aplikasi tidak memerlukan API AI untuk fungsi OCR dasar. Tesseract membaca karakter di perangkat; untuk lebih baik membedakan nama, jabatan, dan perusahaan, layanan vision/AI bisa ditambahkan sebagai tahap ekstraksi. API key tidak boleh ditaruh di JavaScript publik GitHub Pages. Integrasi seperti itu memerlukan backend yang menyimpan secret dan perlu mengirim foto kartu ke layanan tersebut.
+
 ## Privasi & catatan
 
 Aplikasi meminta scope `drive.file`, yang membatasi akses pada file yang dibuat atau dipilih untuk Cardly. Tidak ada server Cardly; source dan halaman di-host GitHub, sedangkan data kontak dan fotonya berada di Drive pribadi tiap pemilik. Akun Workspace lain tidak mendapatkan folder atau file milik pengguna tersebut. OAuth Client ID hanya identifier publik; token akses sementara tidak ditulis ke source. Pengguna dapat mencabut izin melalui akun Google.
 
 Untuk alasan keamanan, jangan commit OAuth client secret atau token ke repo. OCR membantu membaca kartu, tetapi hasilnya tetap perlu diperiksa sebelum disimpan karena kualitas foto dan jenis huruf memengaruhi ketepatannya.
+
